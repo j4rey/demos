@@ -1,0 +1,16 @@
+when you want to ignore the previous emissions when there is a new emission
+<button #switchmap00>Create Switch Map</button><br/>
+
+<br/>
+
+when you want to concurrently handle all the emissions
+<button #mergeall00>Create Merge Map</button><br/>
+
+<br>
+when you want to handle the emissions one after the other as they are emitted
+<button (click)="initializeConcatMap()">Concat Map</button>
+vs
+<button (click)="ConcatMapVsMergeMap()">Merge Map</button><br>
+<br>
+when you want to cancel all the new emissions while processing a previous emisssion
+<button #exhaustmap00>Create Exhaust Map</button><br/>

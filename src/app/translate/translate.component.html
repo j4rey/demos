@@ -1,0 +1,15 @@
+<button (click)="switchLanguage('en')">English</button>
+<button (click)="switchLanguage('fr')">French</button>
+<h1 translate>Title</h1>
+
+<div>
+  {{ 'Intro' | translate:user }}
+</div>
+
+<div>
+  {{ 'Startpage.TranslationSections' | translate }}
+</div>
+
+<div>
+  {{ 'Aboutpage.TranslationSections' | translate }}
+</div>

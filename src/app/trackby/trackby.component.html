@@ -1,0 +1,17 @@
+<h3>Track by property of object</h3>
+<ul>
+  <li *ngFor="let str of (arrString);trackBy:trackByFn">
+    <span (click)="OnStringClick(str)">
+      {{str}}
+    </span>
+  </li>
+</ul>
+<ul>
+  <li *ngFor="let s of (arrString);let index = index;trackBy:trackByFn">
+    <input type="text" [(ngModel)]="arrString[index]" #input>
+  </li>
+</ul>
+
+<!-- <input type="text" [(ngModel)]="strInput">{{strInput}} -->
+
+<h3>Track by property of object</h3>
