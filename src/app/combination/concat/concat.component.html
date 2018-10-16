@@ -1,0 +1,14 @@
+<p>
+  You can think of concat like a line at a ATM, the next transaction (subscription)
+  cannot start until the previous completes!
+</p>
+<p>
+  If throughput, not order, is a primary concern, try merge instead!
+</p>
+<p><strong>waits for sourceOne to complete before subscribing to sourceTwo</strong></p>
+
+<button (click)="staticConcat()">Static: concat(sourceOne, sourceTwo)</button>
+
+<button (click)="delayedConcat()">Delayed: sourceOne.pipe(concat(sourceTwo))</button>
+
+<button (click)="wrongConcat()">concat with source that does not complete</button>

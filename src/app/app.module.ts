@@ -14,6 +14,11 @@ import { PipeableOperatorComponent } from './pipeable-operator/pipeable-operator
 import { MappingComponent } from './mapping/mapping.component';
 import { DeclarativeSubscriptionComponent } from './declarative-subscription/declarative-subscription.component';
 import { ChainingoperatorComponent } from './chainingoperator/chainingoperator.component';
+import { CombinationComponent } from './combination/combination.component';
+import { CombineLatestComponent } from './combination/combine-latest/combine-latest.component';
+import { ConcatComponent } from './combination/concat/concat.component';
+import { MergeComponent } from './combination/merge/merge.component';
+import { StartwithComponent } from './combination/startwith/startwith.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -25,6 +30,15 @@ const appRoutes: Routes = [
   { path: 'pipeable', component: PipeableOperatorComponent},
   { path: 'mapping', component: MappingComponent},
   { path: 'declarative', component: DeclarativeSubscriptionComponent},
+  { path: 'chainingoperators', component: ChainingoperatorComponent},
+  { path: 'combination', component: CombinationComponent,
+    children: [
+      {path: 'combinelatest', component: CombineLatestComponent},
+      {path: 'concat', component: ConcatComponent},
+      {path: 'merge', component: MergeComponent},
+      {path: 'startwith', component: StartwithComponent}
+    ]
+  },
 ]
 
 
@@ -37,7 +51,12 @@ const appRoutes: Routes = [
     PipeableOperatorComponent,
     MappingComponent,
     DeclarativeSubscriptionComponent,
-    ChainingoperatorComponent
+    ChainingoperatorComponent,
+    CombinationComponent,
+    CombineLatestComponent,
+    ConcatComponent,
+    MergeComponent,
+    StartwithComponent
   ],
   imports: [
     BrowserModule,
