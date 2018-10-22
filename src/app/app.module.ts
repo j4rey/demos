@@ -19,26 +19,42 @@ import { CombineLatestComponent } from './combination/combine-latest/combine-lat
 import { ConcatComponent } from './combination/concat/concat.component';
 import { MergeComponent } from './combination/merge/merge.component';
 import { StartwithComponent } from './combination/startwith/startwith.component';
+import { WithlatestfromComponent } from './combination/withlatestfrom/withlatestfrom.component';
+import { CreationComponent } from './creation/creation.component';
+import { FromComponent } from './creation/from/from.component';
+import { OfComponent } from './creation/of/of.component';
+import { ErrorhandlingComponent } from './errorhandling/errorhandling.component';
+import { CatcherrorComponent } from './errorhandling/catcherror/catcherror.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
 const appRoutes: Routes = [
-  { path: 'translate', component: TranslateComponent},
-  { path: 'trackby', component: TrackbyComponent},
-  { path: 'pipeable', component: PipeableOperatorComponent},
-  { path: 'mapping', component: MappingComponent},
-  { path: 'declarative', component: DeclarativeSubscriptionComponent},
-  { path: 'chainingoperators', component: ChainingoperatorComponent},
-  { path: 'combination', component: CombinationComponent,
+  { path: 'translate', component: TranslateComponent },
+  { path: 'trackby', component: TrackbyComponent },
+  { path: 'pipeable', component: PipeableOperatorComponent },
+  { path: 'mapping', component: MappingComponent },
+  { path: 'declarative', component: DeclarativeSubscriptionComponent },
+  { path: 'chainingoperators', component: ChainingoperatorComponent },
+  {
+    path: 'combination', component: CombinationComponent,
     children: [
-      {path: 'combinelatest', component: CombineLatestComponent},
-      {path: 'concat', component: ConcatComponent},
-      {path: 'merge', component: MergeComponent},
-      {path: 'startwith', component: StartwithComponent}
+      { path: 'combinelatest', component: CombineLatestComponent },
+      { path: 'concat', component: ConcatComponent },
+      { path: 'merge', component: MergeComponent },
+      { path: 'startwith', component: StartwithComponent },
+      { path: 'withLatestFrom', component: WithlatestfromComponent },
     ]
   },
+  {
+    path: 'creation', component: CreationComponent,
+    children: [
+      {path: 'from', component: FromComponent},
+      {path: 'of', component: OfComponent},
+    ]
+  },
+  { path: 'errorhandling', component: ErrorhandlingComponent },
 ]
 
 
@@ -56,7 +72,13 @@ const appRoutes: Routes = [
     CombineLatestComponent,
     ConcatComponent,
     MergeComponent,
-    StartwithComponent
+    StartwithComponent,
+    WithlatestfromComponent,
+    CreationComponent,
+    FromComponent,
+    OfComponent,
+    ErrorhandlingComponent,
+    CatcherrorComponent
   ],
   imports: [
     BrowserModule,
@@ -66,10 +88,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
 
     TranslateModule.forRoot({
-      loader:{
+      loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps:[HttpClient]
+        deps: [HttpClient]
       }
     })
   ],

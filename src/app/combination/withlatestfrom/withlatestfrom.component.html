@@ -1,0 +1,17 @@
+<p>Also provide the last value from another observable</p>
+<p> If you want the last emission any time a variable number of observables emits, try combinelatest!</p>
+
+<button (click)="Quicker2ndSrc()">Latest value from quicker second source</button>
+&nbsp;<button (click)="Slower2ndSrc()">Slower second source</button>
+<hr>
+<h3>Progess bar example:</h3>
+
+<progress value='0' max="1" #progressEle></progress>
+
+<div class="progress-container">
+  <div class="progress" #progress id="progress"></div>
+</div>
+
+<button id="load" #load>Load Data</button>
+
+<div id="data" #data></div>
