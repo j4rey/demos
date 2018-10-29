@@ -1,0 +1,10 @@
+<h2>distinctuntilchanged</h2>
+<p>Only emit when the current value is different than the last.</p>
+<p>distinctUntilChanged uses === comparison by default, object references must match!</p>
+
+Data:<input type="text" [(ngModel)]="data"><br>
+<button (click)="emitData()">Emit</button>
+
+<hr>
+Object distinctUntilChanged
+<button (click)="distinctUntilChangedObjects()">Distinct Objects</button>

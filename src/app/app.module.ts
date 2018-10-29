@@ -25,6 +25,15 @@ import { FromComponent } from './creation/from/from.component';
 import { OfComponent } from './creation/of/of.component';
 import { ErrorhandlingComponent } from './errorhandling/errorhandling.component';
 import { CatcherrorComponent } from './errorhandling/catcherror/catcherror.component';
+import { FilteringComponent } from './filtering/filtering.component';
+import { DebouncetimeComponent } from './filtering/debouncetime/debouncetime.component';
+import { DistinctuntilchangedComponent } from './filtering/distinctuntilchanged/distinctuntilchanged.component';
+import { FilterComponent } from './filtering/filter/filter.component';
+import { TakeComponent } from './filtering/take/take.component';
+import { TakeuntilComponent } from './filtering/takeuntil/takeuntil.component';
+import { MulticastingComponent } from './multicasting/multicasting.component';
+import { ShareComponent } from './multicasting/share/share.component';
+import { ShareReplayComponent } from './multicasting/share-replay/share-replay.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -36,10 +45,10 @@ const appRoutes: Routes = [
   { path: 'pipeable', component: PipeableOperatorComponent },
   { path: 'mapping', component: MappingComponent },
   { path: 'declarative', component: DeclarativeSubscriptionComponent },
-  { path: 'chainingoperators', component: ChainingoperatorComponent },
   {
     path: 'combination', component: CombinationComponent,
     children: [
+      { path: '', pathMatch: 'full', redirectTo: 'combinelatest' },
       { path: 'combinelatest', component: CombineLatestComponent },
       { path: 'concat', component: ConcatComponent },
       { path: 'merge', component: MergeComponent },
@@ -50,11 +59,36 @@ const appRoutes: Routes = [
   {
     path: 'creation', component: CreationComponent,
     children: [
-      {path: 'from', component: FromComponent},
-      {path: 'of', component: OfComponent},
+      { path: '', pathMatch: 'full', redirectTo: 'from' },
+      { path: 'from', component: FromComponent },
+      { path: 'of', component: OfComponent },
     ]
   },
-  { path: 'errorhandling', component: ErrorhandlingComponent },
+  {
+    path: 'errorhandling', component: ErrorhandlingComponent,
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'catchError' },
+      { path: 'catchError', component: CatcherrorComponent }
+    ]
+  },
+  {
+    path: 'filtering', component: FilteringComponent,
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'debounceTime' },
+      { path: 'debounceTime', component: DebouncetimeComponent },
+      { path: 'distinctUntilChanged', component: DistinctuntilchangedComponent },
+      { path: 'filter', component: FilterComponent },
+      { path: 'take', component: TakeComponent },
+      { path: 'takeUntil', component: TakeuntilComponent }
+    ]
+  },
+  {
+    path: 'multicasting', component: MulticastingComponent,
+    children:[
+      {path: 'share', component:ShareComponent},
+      {path: 'shareReplay', component:ShareReplayComponent},
+    ]
+  }
 ]
 
 
@@ -78,7 +112,16 @@ const appRoutes: Routes = [
     FromComponent,
     OfComponent,
     ErrorhandlingComponent,
-    CatcherrorComponent
+    CatcherrorComponent,
+    FilteringComponent,
+    DebouncetimeComponent,
+    DistinctuntilchangedComponent,
+    FilterComponent,
+    TakeComponent,
+    TakeuntilComponent,
+    MulticastingComponent,
+    ShareComponent,
+    ShareReplayComponent,
   ],
   imports: [
     BrowserModule,

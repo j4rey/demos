@@ -1,0 +1,18 @@
+<h2>take</h2>
+<p>Emit provided number of values before completing.</p>
+<p>When you are interested in only the first set number of emission, you want to use <strong>take</strong>.
+  Maybe you want to see what the user first clicked on when he/she first entered the page,
+  you would want to subscribe to the click event and just take the first emission.
+  There is a race and you want to observe the race,
+  but you're only interested in the first who crosses the finish line.
+  This operator is clear and straight forward,
+  you just want to see the first <i>n</i> numbers of emission to do whatever it is you need.</p>
+  <p> If you want to take a variable number of values based on some logic,
+    or another observable, you can use <strong>takeUntil</strong> or <strong>takeWhile</strong>!
+</p>
+<p><strong>take</strong> is the opposite of skip where take will take the first <i>n</i> number of emissions 
+      while skip will skip the first <i>n</i> number of emissions.
+</p>
+<button (click)="TakeOneNumber()">Take One number</button>&nbsp;
+<button (click)="TakeFive()">Take 5</button>&nbsp;
+<button (click)="TakeClickOnScreen()">Click on screen</button>
